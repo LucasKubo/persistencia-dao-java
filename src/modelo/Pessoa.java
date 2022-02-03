@@ -87,5 +87,4 @@ public class Pessoa {
 				+ ", cepPessoa=" + cepPessoa + ", telefonePessoa=" + telefonePessoa + ", rendaPessoa=" + rendaPessoa
 				+ ", situacaoPessoa=" + situacaoPessoa + "]";
 	}
-
 }

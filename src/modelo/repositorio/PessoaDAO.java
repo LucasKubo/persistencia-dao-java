@@ -8,7 +8,7 @@ import java.util.List;
 import modelo.Pessoa;
 import modelo.PessoaFisica;
 
-//Estende para poder abrir e fechar conexão no programa principal
+//Estende para poder abrir e fechar conexï¿½o no programa principal
 public class PessoaDAO extends FabricaConexao {
 
 	public int criarPessoa(Pessoa pessoa) {
@@ -48,14 +48,14 @@ public class PessoaDAO extends FabricaConexao {
 
 		try {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM pessoas WHERE id = ?"); // Encapsulando a
-																								// cláusula
+																								// clï¿½usula
 
-			ps.setInt(1, id);// Passando valores da cláusula
+			ps.setInt(1, id);// Passando valores da clï¿½usula
 
-			ResultSet rs = ps.executeQuery();// Armazena o valor da consulta / ps -> Também executa a query
+			ResultSet rs = ps.executeQuery();// Armazena o valor da consulta / ps -> Tambï¿½m executa a query
 
-			if (rs.next()) { // rs.next() -> retorna True se tiver algum resultado e False se não tiver
-				// Atribuindo valores encontrados pela query às propriedades do objeto
+			if (rs.next()) { // rs.next() -> retorna True se tiver algum resultado e False se nï¿½o tiver
+				// Atribuindo valores encontrados pela query ï¿½s propriedades do objeto
 				pessoa.setIdPessoa(rs.getInt(1));
 				pessoa.setNomePessoa(rs.getString(2));
 				pessoa.setEnderecoPessoa(rs.getString(3));
