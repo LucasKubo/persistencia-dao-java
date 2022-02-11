@@ -18,7 +18,11 @@ public class PessoaFisica extends Pessoa{
 	public long getCpf() {
 		return cpf;
 	}
-
+	
+	public void setCpf(long cpf) {
+		this.cpf = cpf;
+	}
+	
 	public Date getNascto() {
 		return nascto;
 	}

@@ -3,20 +3,18 @@ package modelo.repositorio;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
-
 import modelo.Pessoa;
 import modelo.PessoaFisica;
 
-//Estende para poder abrir e fechar conexï¿½o no programa principal
-public class PessoaDAO extends FabricaConexao {
-
-	public int criarPessoa(Pessoa pessoa) {
+//Estende para poder abrir e fechar conexão no programa principal
+public abstract class PessoaDAO extends FabricaConexao {
+	//Encapsulamento do método para que não seja utilizado de maneira indevida
+	protected int criarPessoa(Pessoa pessoa) {
 		int id = 0;
 
 		try {
 			// Encapsulando Query
-			PreparedStatement ps = conn
+			PreparedStatement ps = super.conn
 					.prepareStatement("INSERT INTO pessoas (nome,endereco,cep,telefone,renda,situacao)"
 							+ "VALUES (?,?,?,?,?,?) RETURNING id");
 
@@ -44,7 +42,7 @@ public class PessoaDAO extends FabricaConexao {
 
 	public Pessoa recuperarPessoaPorId(int id) {
 
-		Pessoa pessoa = new PessoaFisica();
+		Pessoa pessoa = new Pessoa();
 
 		try {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM pessoas WHERE id = ?"); // Encapsulando a

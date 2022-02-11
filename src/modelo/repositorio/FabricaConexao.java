@@ -11,25 +11,25 @@ public class FabricaConexao { //Objetivo de conectar os objetos ao banco de dado
 			String url = "jdbc:postgresql://localhost/projetodao";//Endereï¿½o de conexï¿½o (principais atributos)
 			
 			Properties props = new Properties(); //Classe que permite dar propriedades de conexï¿½o com o Banco de dados
-			props.setProperty("user", "postgres"); //Define usuï¿½rio
+			props.setProperty("user", "postgres"); //Define usuário
 			props.setProperty("password", "admin"); //Passa senha
 			props.setProperty("ssl", "false"); //verifica se segue camada de seguranï¿½a
 			
 			conn = DriverManager.getConnection(url, props); //DriveManager do pacote java.sql encapsula o JDBC do banco importado
 			
-			System.out.println("Conexï¿½o aberta !");
+			System.out.println("Conexão aberta !");
 			
 		} catch (Exception e) {
-			System.out.println("Erro ao abrir coexï¿½o !" + e.getMessage());
+			System.out.println("Erro ao abrir conexão !" + e.getMessage());
 		}
 	}
 
-	public void fecharConexao() {//Realiza o fechamento da conexï¿½o
+	public void fecharConexao() {//Realiza o fechamento da conexão
 		try {
 			this.conn.close();
-			System.out.println("Conexï¿½o fechada !");
+			System.out.println("Conexão fechada !");
 		} catch (Exception e) {
-			System.out.println("Erro ao fechar coexï¿½o !" + e.getMessage());
+			System.out.println("Erro ao fechar coexão !" + e.getMessage());
 		}
 	}
 }
