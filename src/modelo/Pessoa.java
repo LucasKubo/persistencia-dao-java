@@ -1,6 +1,6 @@
 package modelo;
 
-public class Pessoa {
+public abstract class Pessoa {
 	
 	protected int idPessoa;
 	protected String nomePessoa;

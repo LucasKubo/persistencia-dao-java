@@ -69,4 +69,9 @@ public class ContaComum {
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
+	
+	//Criar uma conta poupança ou especial
+	public ContaComum abrirConta() {
+		return abrirConta();
+	}
 }

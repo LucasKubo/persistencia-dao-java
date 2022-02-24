@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import modelo.Pessoa;
-import modelo.PessoaFisica;
 
 //Estende para poder abrir e fechar conexão no programa principal
 public abstract class PessoaDAO extends FabricaConexao {
@@ -40,9 +39,7 @@ public abstract class PessoaDAO extends FabricaConexao {
 		return id;
 	}
 
-	public Pessoa recuperarPessoaPorId(int id) {
-
-		Pessoa pessoa = new Pessoa();
+	public void recuperarPessoaPorId(int id, Pessoa resultado) {
 
 		try {
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM pessoas WHERE id = ?"); // Encapsulando a
@@ -54,24 +51,21 @@ public abstract class PessoaDAO extends FabricaConexao {
 
 			if (rs.next()) { // rs.next() -> retorna True se tiver algum resultado e False se nï¿½o tiver
 				// Atribuindo valores encontrados pela query ï¿½s propriedades do objeto
-				pessoa.setIdPessoa(rs.getInt(1));
-				pessoa.setNomePessoa(rs.getString(2));
-				pessoa.setEnderecoPessoa(rs.getString(3));
-				pessoa.setCepPessoa(rs.getInt(4));
-				pessoa.setTelefonePessoa(rs.getString(5));
-				pessoa.setRendaPessoa(rs.getDouble(6));
-				pessoa.setSituacaoPessoa(rs.getByte(7));
+				resultado.setIdPessoa(rs.getInt(1));
+				resultado.setNomePessoa(rs.getString(2));
+				resultado.setEnderecoPessoa(rs.getString(3));
+				resultado.setCepPessoa(rs.getInt(4));
+				resultado.setTelefonePessoa(rs.getString(5));
+				resultado.setRendaPessoa(rs.getDouble(6));
+				resultado.setSituacaoPessoa(rs.getByte(7));
 			}
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-
-		return pessoa;
-
 	}
 
-	public ArrayList<Pessoa> recuperarPessoas() {
+	abstract public ArrayList<Pessoa> recuperarPessoas(); /*{
 		ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
 
 		try {
@@ -97,7 +91,8 @@ public abstract class PessoaDAO extends FabricaConexao {
 		}
 
 		return pessoas;
-	}
+		
+	}*/
 
 	public int editarPessoa(Pessoa pessoa) {
 		int id = 0;
